@@ -13,8 +13,11 @@ if __name__ == '__main__':
     min_length = 3
     st.title('Berbaxerka hitz bilatzailea')
     fixed_letter = st.text_input('Sartu derrigorrezko hizkia')
-    possible_letters = st.text_input('Sartu aukerazko hizkiak koma bidez bananduta')
-    possible_letters = possible_letters.split(',')
+    possible_letters = st.text_input('Sartu aukerazko hizkiak jarraian edo koma bidez bananduta')
+    if ',' in possible_letters:
+        possible_letters = possible_letters.split(',')
+    else:
+        possible_letters = list(possible_letters)
     if fixed_letter not in possible_letters:
         possible_letters.append(fixed_letter)
     fixed_letter = fixed_letter.lower()
