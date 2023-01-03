@@ -36,9 +36,21 @@ if __name__ == '__main__':
     possible_words = list(set(possible_words))
     possible_words.sort()
     # Make chunks of 100 words
+    col1, col2 = st.columns(2)
     chunks = [possible_words[i:i + 100] for i in range(0, len(possible_words), 100)]
     for chunk in chunks:
-        st.write(chunk)
+        col1.write(chunk)
+    # Find the word that contains all the letters
+    all_letter_words = []
+    for word in possible_words:
+        intersection = set(word).intersection(set(possible_letters))
+        if len(intersection) == len(possible_letters):
+            all_letter_words.append(word)
+    if len(all_letter_words) > 0:
+        col2.write('Guztitzak (hizki denak erabiliz osaturiko hitzak):')
+        col2.write(all_letter_words)
+
+
 
 
 
